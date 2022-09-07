@@ -8,6 +8,7 @@ exports.create = async (req, res) => {
         if(!result) {
             return res.sen('Ocorreu uma falha')
         }
+        req.flash('success', 'Consulta registrada.')
         return res.redirect('/')
     }catch(err) {
         console.log(err)

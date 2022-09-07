@@ -13,6 +13,11 @@ const AppointmentSchema = new mongoose.Schema({
 const Appo = mongoose.model('agendamento', AppointmentSchema)
 
 class Appointment {
+
+    constructor() {
+        this.errors = []
+    }
+
     async Create(name, email, description, cpf, date, time) {
 
         try {

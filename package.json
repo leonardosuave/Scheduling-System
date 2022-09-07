@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/leonardosuave/Scheduling-System#readme",
   "dependencies": {
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "mongoose": "^6.5.4",
     "path": "^0.12.7",
     "validator": "^13.7.0"

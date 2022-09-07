@@ -1,0 +1,12 @@
+<!--Para flash com msg de cadastro com sucesso-->
+<% if (success.length > 0) { %>
+    <div class="row">
+        <div class="col my-3">
+          <div class="alert alert-success">
+            <% success.forEach(success => { %>
+                <%= success %><br>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    <% } %>
