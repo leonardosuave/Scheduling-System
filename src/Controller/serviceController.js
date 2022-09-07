@@ -16,3 +16,14 @@ exports.create = async (req, res) => {
     }
 
 }
+
+exports.AppointmentList = async (req, res) => {
+
+    try{
+        const result = await Appointment.getAll(false)
+        res.json(result)
+    }catch(err) {
+        console.log(err)
+        res.send('404')
+    }
+}

@@ -30,6 +30,17 @@ class Appointment {
             return false
         }
     }
+
+    async getAll(showFinished) {
+
+        if(showFinished) {
+            //Pega todas as consultas finalizadas ou não finalizadas
+            return await Appo.find() 
+        } else {
+            //Pega consulta não finalizadas
+            return await Appo.find({'finished': false});
+        }
+    }
 }
 
 module.exports = new Appointment()
