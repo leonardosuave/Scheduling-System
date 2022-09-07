@@ -1,5 +1,6 @@
 const mongoose= require('mongoose')
 const validator = require('validator')
+const AppointmentFactory = require('../factories/AppointmentFactory')
 
 const AppointmentSchema = new mongoose.Schema({
     name: String,
@@ -38,7 +39,18 @@ class Appointment {
             return await Appo.find() 
         } else {
             //Pega consulta não finalizadas
-            return await Appo.find({'finished': false});
+            const appos = await Appo.find({'finished': false});
+            const appointments = []
+            
+            //Tratamento do objeto por factories
+            appos.forEach(res => {
+                if(res.date != undefined) {
+                    appointments.push(AppointmentFactory.Build(res))
+                }
+                
+            })
+
+            return appointments
         }
     }
 }
