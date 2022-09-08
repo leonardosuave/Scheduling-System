@@ -1,0 +1,19 @@
+<h3>Consultas: </h3>
+<hr>
+
+<!--Exemplo de forms com method GET -> vai trabalhar via (req.query.search)-->
+<form action="/search" method="get">
+    <input type="search" name="search" id="search" placeholder="Email ou CPF">
+    <button>Pesquisar</button>
+</form>
+
+<% appos.forEach(res => { %>
+
+    <h1>Consulta: <%= res.description %></h1>
+    <hr>
+    <h4>Paciente: <%= res.name %></h4>
+    <h4>Email: <%= res.email %></h4>
+    <h4>CPF: <%= res.cpf %></h4>
+    <hr>
+
+<% }) %>

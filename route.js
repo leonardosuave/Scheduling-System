@@ -16,6 +16,9 @@ route.get('/appointments', serviceController.AppointmentList)
 route.get('/event/:id', serviceController.Appointment)
 route.post('/finish', serviceController.finishAppointment)
 
+route.get('/list', serviceController.AllAppointments)
+route.get('/search', serviceController.searchAppointments)
+
 
 
 module.exports = route

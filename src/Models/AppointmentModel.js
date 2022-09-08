@@ -62,6 +62,10 @@ class Appointment {
         if(typeof id !== 'string') return;
         return await Appo.findByIdAndUpdate(id, {finished: true})
     }
+
+    async search(query) {
+        return Appo.find().or([{email: query}, {cpf: query}])
+    }
 }
 
 module.exports = new Appointment()

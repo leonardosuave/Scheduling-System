@@ -55,3 +55,27 @@ exports.finishAppointment = async (req, res) => {
         res.send('404')
     }
 }
+
+exports.AllAppointments = async (req, res) => {
+
+    try{
+        const result = await Appointment.getAll(true)
+        res.render('list', {appos: result})
+    }catch(err) {
+        console.log(err)
+        res.send('404')
+    }
+}
+
+exports.searchAppointments = async (req, res) => {
+
+    //Exemplo de formulário via method GET -> trabalha com req.query
+    try {
+        if(req.query.search == '') return res.redirect('/list') //Pq tem um appointment registrado como tudo em branco -> se apagar este appointment entao pode fazer a verificação através de result == undefined
+        const result = await Appointment.search(req.query.search)
+        res.render('list', {appos: result})
+    }catch(err) {
+        console.log(err)
+        res.send('404')
+    }
+}
