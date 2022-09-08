@@ -13,6 +13,15 @@
     const calendar = new FullCalendar.Calendar(element, {
         initialView: 'dayGridMonth',
         locale: 'pt-br',
+
+        //nome da rota que possui as consultas ja tratadas
+        events: 'appointments', 
+
+        //É uma funcao de callback que é chamado quando clicado em um evento
+        eventClick: function(info) {
+            //Para mudar o usuário de página quando clicado 
+            window.location.href = `/event/${info.event.id}`
+        }
     })
     calendar.render()
 </script>

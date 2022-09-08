@@ -27,3 +27,31 @@ exports.AppointmentList = async (req, res) => {
         res.send('404')
     }
 }
+
+exports.Appointment = async (req, res) => {
+
+    try {
+        if(!req.params.id) return res.send('404')
+        const result = await Appointment.findById(req.params.id)
+        if(!result) return res.redirect('/')
+        res.render('event', {result})
+
+    }catch(err) {
+        console.log(err)
+        res.send('404')
+    }
+}
+
+exports.finishAppointment = async (req, res) => {
+    
+    try{
+        //Poderia ser por params e assim não seria necessario fazer um input hidden
+        if(!req.body.id) return res.send('404')
+        const result = await Appointment.finish(req.body.id)
+        if(!result) return res.send('404')
+        res.redirect('/')
+    }catch(err) {
+        console.log(err)
+        res.send('404')
+    }
+}

@@ -9,7 +9,6 @@ class AppointmentFactory{
         const minuts = Number.parseInt(simpleAppointment.time.split(':')[1])
 
         const startDate = new Date(year, month, day, hour, minuts, 0, 0)
-        startDate.setHours( startDate.getHours() - 3) //Passa para GMT-3(Horario Br)
 
         const appo = {
             id: simpleAppointment._id,

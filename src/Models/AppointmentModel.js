@@ -47,11 +47,20 @@ class Appointment {
                 if(res.date != undefined) {
                     appointments.push(AppointmentFactory.Build(res))
                 }
-                
             })
 
             return appointments
         }
+    }
+
+    async findById(id) {
+        if(typeof id !== 'string') return;
+        return await Appo.findOne({'_id': id})
+    }
+
+    async finish(id) {
+        if(typeof id !== 'string') return;
+        return await Appo.findByIdAndUpdate(id, {finished: true})
     }
 }
 
