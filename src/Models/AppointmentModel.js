@@ -82,6 +82,7 @@ class Appointment {
 
         const appos = await this.getAll(false)
 
+        //Estrutura base para configuração da biblioteca de envio nodemailer
         var transport = nodemailer.createTransport({
             host: "smtp.mailtrap.io",
             port: 2525,
@@ -99,10 +100,12 @@ class Appointment {
 
             if(gap <= hour) {
 
+                //Caso não tenha enviado email ainda
                 if(!app.notified) {
 
-                    await Appo.findByIdAndUpdate(app.id, {notified: true})
+                    await Appo.findByIdAndUpdate(app.id, {notified: true}) //Seta notified como ja enviado
 
+                    //Estrutura com as informaçoes de envio do email.
                     transport.sendMail({
                         from: 'Leonardo Suave <leonardo.suave15@hotmail.com>',
                         to: app.email,
