@@ -13,8 +13,10 @@ class AppointmentFactory{
         const appo = {
             id: simpleAppointment._id,
             title: simpleAppointment.name + ' - ' + simpleAppointment.description,
+            email: simpleAppointment.email,
             start: startDate,
-            end: startDate
+            end: startDate,
+            notified: simpleAppointment.notified
         }
         return appo
     }
